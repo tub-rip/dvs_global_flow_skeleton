@@ -1,0 +1,41 @@
+<launch>
+
+  <node pkg="rosbag" type="play" name="player" args="-r 1.0 -d 1. -s 0 path_to_rosbag/slider_far.bag" />
+
+  <!-- Render events and frames -->
+  <node name="dvs_displayer_one" pkg="dvs_displayer" type="dvs_displayer" output="screen">
+    <param name="display_method" value="red-blue"/>
+    <remap from="events" to="/dvs/events" />
+    <remap from="event_image" to="event_image" />
+  </node>
+
+  <!-- configure -->
+  <!-- <node name="rqt_reconfigure" pkg="rqt_reconfigure" type="rqt_reconfigure" /> -->
+  <node name="oflow" pkg="dvs_global_flow" type="dvs_global_flow" output="screen">
+
+    <!-- Input / Output -->
+    <!-- Which topic to listen? Map topic name of input events -->
+    <remap from="events" to="/dvs/events" />
+    <!-- <remap from="dvs_motion_compensated" to="/dvs/motion_compensated_image" /> -->
+
+    <!-- Printing level. The higher, the more details are printed -->
+    <param name="verbosity" value="1" />
+
+    <!-- Sliding Window -->
+    <!-- Number of events used to synthetize an image of warped events -->
+    <param name="num_events_per_image" value="50000" />
+    <!-- Number of events to slide for next window/packet of events -->
+    <param name="num_events_slide" value="50000" />
+
+    <!-- Objective function to be optimized: 0=Variance, 1=Mean Square, etc.-->
+    <param name="contrast_measure" value="0" />
+
+    <!-- Event warping -->
+    <param name="use_polarity" value="true" />
+    <param name="gaussian_smoothing_sigma" value="1." />
+  </node>
+
+  <node name = "my_rqt_dashboard" pkg = "rqt_gui" type = "rqt_gui" respawn = "false" output = "screen"
+    args = "--perspective-file $(find dvs_global_flow)/launch/gflow.perspective"/>
+
+</launch>
