@@ -16,17 +16,8 @@ Using the [Contrast Maximization method](http://rpg.ifi.uzh.ch/docs/CVPR18_Galle
 	source devel/setup.bash
 
 ## Running the code
-In one terminal:
-
-	roscore
-	
-In another terminal:
-
-	rqt --perspective-file gflow.perspective
-
-
-In another terminal:
+In a terminal:
 
 	roslaunch dvs_global_flow ijrr_translation.launch
 	
-For this last part, please make sure that the launch file has the correct path to the data (e.g., ROS bag `slider_far.bag` from the [Event Camera Dataset IJRR 2017](http://rpg.ifi.uzh.ch/davis_data.html))
+For this last part, please make sure that the launch file has the correct path to the data (e.g., ROS bag [slider_far.bag](http://rpg.ifi.uzh.ch/datasets/davis/slider_far.bag) from the [Event Camera Dataset IJRR 2017](http://rpg.ifi.uzh.ch/davis_data.html))
