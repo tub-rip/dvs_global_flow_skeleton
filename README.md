@@ -44,7 +44,7 @@ Clone this repository into the `src` folder of your catkin workspace.
 The catkin package dependencies are:
 - [catkin simple](https://github.com/catkin/catkin_simple)
 - ROS messages for DVS ([rpg_dvs_ros](https://github.com/uzh-rpg/rpg_dvs_ros))
-- [Google Logging Library (glog)](https://github.com/catkin/catkin_simple.git)
+- [Google Logging Library (glog)](https://github.com/ethz-asl/glog_catkin.git)
 - [Gflags (formerly Google Commandline Flags)](https://github.com/ethz-asl/gflags_catkin)
 
 The above dependencies are specified in the [dependencies.yaml](dependencies.yaml) file. They can be installed with the following commands from the `src` folder of your catkin workspace:
